@@ -1,36 +1,24 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
+# ENABLE POWERLEVEL10K INSTANT PROMPT.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# ZSH Styles
-CASE_SENSITIVE="true"
-zstyle ':omz:update' mode auto
-zstyle ':omz:update' frequency 13
-COMPLETION_WAITING_DOTS="true"
-plugins=(git rails textmate ruby lighthouse)
-ZSH_THEME="powerlevel10k/powerlevel10k"
-
-# exports
-## export PATH=$HOME/bin:/usr/local/bin:$PATH
+# PATH TO YOUR H-MY-ZSH INSTALLATION 
 export ZSH="$HOME/.oh-my-zsh"
-export PATH=$HOME/bin:/usr/local/bin:$PATH
-export ARCHFLAGS="-arch x86_64"
 
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-else
-  export EDITOR='nvim'
-fi
+# THEMES & SETS
+# set -o vi
+ZSH_THEME="powerlevel10k/powerlevel10k"
+COMPLETION_WAITING_DOTS="true"
 
-# sources
+# STANDARD PLUGINS CAN BE FOUND IN $ZSH/PLUGINS/
+plugins=(git aliases colorize tmux gh)
+
 source $ZSH/oh-my-zsh.sh
-source ~/powerlevel10k/powerlevel10k.zsh-theme
 
-# aliases
-alias vi="nvim"
+# USER CONFIGURATION
+
+# FOR A FULL LIST OF ACTIVE ALIASES, RUN `ALIAS`.
 alias rnote="flatpak run com.github.flxzt.rnote"
 alias startmax="emacs --daemon &; sleep 5; emacsclient -c -a 'emacs'"
 alias emax="emacsclient -c -a 'emacs'"
@@ -38,7 +26,14 @@ alias killmax="emacsclient -e '(kill-emacs)'"
 alias ll="ls -a"
 alias csb="ssh mae117@cluster.csb.pitt.edu"
 alias dennis="ssh mae117@klaus.devbio.pitt.edu"
-alias doomutils="~/.emacs.d/bin/doom upgrade; ~/.emacs.d/bin/doom sync; ~/.emacs.d/bin/doom purge; ~/.emacs.d/bin/doom doctor"
+alias eup="~/.emacs.d/bin/doom upgrade; ~/.emacs.d/bin/doom sync; ~/.emacs.d/bin/doom purge; ~/.emacs.d/bin/doom doctor"
+alias startr="sudo rstudio-server start"
+alias stopr="sudo rstudio-server start"
+alias up="sudo apt update && sudo apt upgrade -y"
+alias saus="source .zshrc"
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -54,6 +49,3 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
