@@ -12,7 +12,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 COMPLETION_WAITING_DOTS="true"
 
 # STANDARD PLUGINS CAN BE FOUND IN $ZSH/PLUGINS/
-plugins=(git aliases colorize tmux gh)
+plugins=(git aliases colorize gh)
 
 source $ZSH/oh-my-zsh.sh
 
